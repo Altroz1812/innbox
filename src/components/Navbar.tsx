@@ -27,7 +27,7 @@ const Navbar = () => {
               </a>
               <a href="tel:+905302451198" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
                 <Phone className="h-4 w-4" />
-                <span>+90 530 245 11 98</span>
+                <span>+918045476220</span>
               </a>
             </div>
             <div className="flex items-center gap-3">

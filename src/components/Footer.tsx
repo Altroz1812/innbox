@@ -60,13 +60,13 @@ const Footer = () => {
               <li className="flex items-start gap-2">
                 <MapPin className="h-5 w-5 mt-0.5 flex-shrink-0 text-primary" />
                 <span className="text-primary-foreground/80 text-sm">
-                  Industrial Zone, Manufacturing District, Turkey
+                  Survey No-416, Dundigal Orr Service Road, Hyderabad-500043.
                 </span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="h-5 w-5 flex-shrink-0 text-primary" />
                 <a href="tel:+905302451198" className="text-primary-foreground/80 hover:text-primary text-sm">
-                  +90 530 245 11 98
+                  +918045476220
                 </a>
               </li>
               <li className="flex items-center gap-2">
