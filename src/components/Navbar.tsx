@@ -21,9 +21,9 @@ const Navbar = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex h-12 items-center justify-between text-sm">
             <div className="flex items-center gap-6">
-              <a href="mailto:info@Innbox Modular https://www.innboxprefab.com/" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+              <a href="mailto:info@Innbox Modular innboxprefab.com" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
                 <Mail className="h-4 w-4" />
-                <span>info@Innbox Modular https://www.innboxprefab.com/</span>
+                <span>info@Innbox Modular innboxprefab.com</span>
               </a>
               <a href="tel:+905302451198" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
                 <Phone className="h-4 w-4" />

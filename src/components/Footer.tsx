@@ -71,8 +71,8 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="h-5 w-5 flex-shrink-0 text-primary" />
-                <a href="mailto:info@Innbox Modular https://www.innboxprefab.com/" className="text-primary-foreground/80 hover:text-primary text-sm">
-                  info@Innbox Modular https://www.innboxprefab.com/
+                <a href="mailto:info@Innbox Modular innboxprefab.com" className="text-primary-foreground/80 hover:text-primary text-sm">
+                  info@Innbox Modular innboxprefab.com
                 </a>
               </li>
             </ul>
