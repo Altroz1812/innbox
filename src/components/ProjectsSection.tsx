@@ -28,7 +28,7 @@ const ProjectsSection = () => {
           </h2>
           <div className="w-16 h-1 bg-primary mx-auto mb-6" />
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Our references reflect the strong and diverse portfolio of Max Prefabs, which has 
+            Our references reflect the strong and diverse portfolio of Innbox Prefab, which has 
             realized successful projects in various sectors internationally.
           </p>
         </div>

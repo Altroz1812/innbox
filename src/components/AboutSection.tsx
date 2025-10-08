@@ -11,14 +11,14 @@ const AboutSection = () => {
             <div className="absolute -left-8 -top-8 w-32 h-32 bg-primary/10 rounded-lg -z-10" />
             <img
               src={project3}
-              alt="About Max Prefabs"
+              alt="About Innbox Prefab"
               className="rounded-lg shadow-xl w-full"
             />
           </div>
 
           <div>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              About <span className="text-primary">Max Prefabs</span>
+              About <span className="text-primary">Innbox Prefab</span>
             </h2>
             <div className="w-16 h-1 bg-primary mb-6" />
             <p className="text-muted-foreground leading-relaxed mb-6">
