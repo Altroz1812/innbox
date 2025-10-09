@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-container-building.jpg";
 import project1 from "@/assets/project-1.jpg";
 import project2 from "@/assets/project-2.jpg";
@@ -74,15 +75,16 @@ const HeroSlider = () => {
                     {slide.description}
                   </p>
                   <div className="flex flex-col sm:flex-row gap-3">
-                    <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold">
-                      GET OFFER NOW
+                    <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold min-h-[44px]" asChild>
+                      <Link to="/contact">GET OFFER NOW</Link>
                     </Button>
                     <Button
                       size="lg"
                       variant="outline"
-                      className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-foreground"
+                      className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-foreground min-h-[44px]"
+                      asChild
                     >
-                      MORE INFO
+                      <Link to="/products">MORE INFO</Link>
                     </Button>
                   </div>
                 </div>

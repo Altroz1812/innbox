@@ -1,4 +1,5 @@
-import { Building2, Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import { Building2, Mail, Phone, MapPin, Facebook, Linkedin, Instagram } from "lucide-react";
+import { FaXTwitter, FaYoutube, FaWhatsapp } from "react-icons/fa6";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -11,11 +12,11 @@ const Footer = () => {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <Building2 className="h-8 w-8 text-primary" />
-              <span className="text-xl font-bold">Innbox Modular Prefab</span>
+              <span className="text-xl font-bold">INNBOX MODULAR PREFAB</span>
             </div>
             <p className="text-primary-foreground/80 leading-relaxed text-sm">
               Leading manufacturer of quality prefabricated container buildings and modular structures 
-              with 18 years of experience.
+              based in Hyderabad, India.
             </p>
           </div>
 
@@ -60,46 +61,87 @@ const Footer = () => {
               <li className="flex items-start gap-2">
                 <MapPin className="h-5 w-5 mt-0.5 flex-shrink-0 text-primary" />
                 <span className="text-primary-foreground/80 text-sm">
-                  Survey No-416, Dundigal Orr Service Road, Hyderabad-500043.
+                  Survey No-416, Dundigal Orr Service Road, Hyderabad-500043, Telangana, India
                 </span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="h-5 w-5 flex-shrink-0 text-primary" />
-                <a href="tel:+905302451198" className="text-primary-foreground/80 hover:text-primary text-sm">
-                  +918045476220
+                <a href="tel:+916302165600" className="text-primary-foreground/80 hover:text-primary text-sm">
+                  +91 630-216-5600
                 </a>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="h-5 w-5 flex-shrink-0 text-primary" />
-                <a href="mailto:info@Innbox Modular innboxprefab.com" className="text-primary-foreground/80 hover:text-primary text-sm">
-                  info@Innbox Modular innboxprefab.com
+                <a href="mailto:info@innboxmodular.com" className="text-primary-foreground/80 hover:text-primary text-sm">
+                  info@innboxmodular.com
+                </a>
+              </li>
+              <li className="flex items-center gap-2">
+                <FaWhatsapp className="h-5 w-5 flex-shrink-0 text-primary" />
+                <a 
+                  href="https://wa.me/916302165600?text=Hello%20Innbox%20Modular%20Prefab%2C%20I%20would%20like%20to%20inquire%20about%20your%20products" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-primary-foreground/80 hover:text-primary text-sm"
+                >
+                  WhatsApp
                 </a>
               </li>
             </ul>
 
             <div className="flex gap-3 mt-6">
-              {[
-                { icon: Facebook, label: "Facebook" },
-                { icon: Twitter, label: "Twitter" },
-                { icon: Linkedin, label: "LinkedIn" },
-                { icon: Instagram, label: "Instagram" },
-              ].map(({ icon: Icon, label }) => (
-                <a
-                  key={label}
-                  href="#"
-                  className="bg-primary-foreground/10 hover:bg-primary p-2 rounded-lg transition-colors"
-                  aria-label={label}
-                >
-                  <Icon className="h-5 w-5" />
-                </a>
-              ))}
+              <a
+                href="https://www.facebook.com/innboxmodularprefab"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-primary-foreground/10 hover:bg-primary p-2 rounded-lg transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
+                aria-label="Facebook"
+              >
+                <Facebook className="h-5 w-5" />
+              </a>
+              <a
+                href="https://x.com/InnboxP?s=08"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-primary-foreground/10 hover:bg-primary p-2 rounded-lg transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
+                aria-label="Twitter/X"
+              >
+                <FaXTwitter className="h-5 w-5" />
+              </a>
+              <a
+                href="https://www.youtube.com/@innboxmodularprefab2"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-primary-foreground/10 hover:bg-primary p-2 rounded-lg transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
+                aria-label="YouTube"
+              >
+                <FaYoutube className="h-5 w-5" />
+              </a>
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-primary-foreground/10 hover:bg-primary p-2 rounded-lg transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="h-5 w-5" />
+              </a>
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-primary-foreground/10 hover:bg-primary p-2 rounded-lg transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
+                aria-label="Instagram"
+              >
+                <Instagram className="h-5 w-5" />
+              </a>
             </div>
           </div>
         </div>
 
         <div className="border-t border-primary-foreground/20 pt-8 text-center">
           <p className="text-primary-foreground/60 text-sm">
-            &copy; {currentYear} Innbox Modular Prefab. All rights reserved. | Exported to 95+ countries worldwide
+            &copy; {currentYear} Innbox Modular Prefab. All rights reserved. | Quality prefabricated solutions from Hyderabad, India
           </p>
         </div>
       </div>

@@ -12,3 +12,11 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://innboxprefab.com/sitemap.xml
+
+# Disallow admin pages
+Disallow: /admin/
+
+# Crawl-delay for better server performance
+Crawl-delay: 1

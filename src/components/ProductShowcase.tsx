@@ -1,9 +1,14 @@
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
+import { getPrimaryImage } from "@/lib/products";
+import { useProducts } from "@/hooks/useProducts";
 import portableCabin from "@/assets/portable-cabin.jpg";
 import siteOffice from "@/assets/site-office.jpg";
 import containerHouse from "@/assets/container-house.jpg";
 
-const products = [
+const fallbackProducts = [
   {
     tag: "PREFAB BUILDINGS",
     title: "Prefabricated",
@@ -24,18 +29,58 @@ const products = [
     tag: "CABINS",
     title: "Security & Sanitary",
     subtitle: "Cabins",
-    description: "Innbox Modular Prefab manufactures security and sanitary cabins in Turkey. The sanitary cabins can be produced as toilet or shower or both can be in same cabin. The security and sanitary cabins can be produced in many different dimensions. The security and sanitary cabins can be ship as ready to use or demountable to safe from the transportation costs.",
+    description: "Innbox Modular Prefab manufactures security and sanitary cabins in India. The sanitary cabins can be produced as toilet or shower or both can be in same cabin. The security and sanitary cabins can be produced in many different dimensions. The security and sanitary cabins can be ship as ready to use or demountable to save on transportation costs.",
     image: containerHouse,
     reverse: false,
   },
 ];
 
 const ProductShowcase = () => {
+  // Use React Query for data fetching with caching
+  const { data: products = [], isLoading } = useProducts();
+
+  const displayProducts = products.length > 0 
+    ? products.slice(0, 3).map((p, i) => ({
+        tag: p.category.toUpperCase(),
+        title: p.name.split(' ')[0],
+        subtitle: p.name.split(' ').slice(1).join(' '),
+        description: p.description || p.short_description || '',
+        image: getPrimaryImage(p),
+        reverse: i % 2 === 1,
+        slug: p.slug,
+        categorySlug: p.category_slug,
+      }))
+    : fallbackProducts.map((p, i) => ({ ...p, slug: '', categorySlug: '' }));
+  
+  if (isLoading) {
+    return (
+      <section id="products" className="py-16 lg:py-24 bg-muted/30">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="space-y-24">
+            {[...Array(3)].map((_, i) => (
+              <div key={i} className="grid md:grid-cols-2 gap-12 items-center">
+                <Skeleton className="aspect-video w-full rounded-lg" />
+                <div className="space-y-4">
+                  <Skeleton className="h-4 w-32" />
+                  <Skeleton className="h-10 w-3/4" />
+                  <Skeleton className="h-1 w-16" />
+                  <Skeleton className="h-4 w-full" />
+                  <Skeleton className="h-4 w-full" />
+                  <Skeleton className="h-10 w-32" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section id="products" className="py-16 lg:py-24 bg-muted/30">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="space-y-24">
-          {products.map((product, index) => (
+          {displayProducts.map((product, index) => (
             <div
               key={index}
               className={`grid md:grid-cols-2 gap-12 items-center ${
@@ -53,8 +98,10 @@ const ProductShowcase = () => {
                 <p className="text-muted-foreground leading-relaxed mb-6">
                   {product.description}
                 </p>
-                <Button className="bg-primary hover:bg-primary/90">
-                  Read More
+                <Button className="bg-primary hover:bg-primary/90 min-h-[44px]" asChild>
+                  <Link to={product.slug ? `/products/${product.categorySlug}/${product.slug}` : '/products'}>
+                    Read More
+                  </Link>
                 </Button>
               </div>
 
@@ -65,6 +112,7 @@ const ProductShowcase = () => {
                     src={product.image}
                     alt={`${product.title} ${product.subtitle}`}
                     className="rounded-lg shadow-xl w-full relative z-10"
+                    loading="lazy"
                   />
                 </div>
               </div>
