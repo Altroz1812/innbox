@@ -19,9 +19,12 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, isAdmin, signOut } = useAuth();
 
-  const menuItems = [
+  const menuItemsBeforeProducts = [
     { label: "HOME", href: "/" },
     { label: "CORPORATE", href: "/about" },
+  ];
+
+  const menuItemsAfterProducts = [
     { label: "REFERENCES", href: "/projects" },
     { label: "QUALITY", href: "/quality" },
     { label: "BLOG", href: "/blog" },
@@ -68,14 +71,14 @@ const Navbar = () => {
       {/* Main Navigation */}
       <header className="sticky top-0 z-50 w-full bg-primary shadow-md">
         <nav className="container mx-auto px-4 lg:px-8">
-          <div className="flex h-16 items-center justify-between">
+          <div className="flex h-16 items-center gap-8">
             <Link to="/" className="flex items-center text-primary-foreground">
               <img src={innboxLogo} alt="Innbox Modular Prefab" className="h-12 w-auto" />
             </Link>
 
             {/* Desktop Menu */}
-            <ul className="hidden md:flex items-center gap-1">
-              {menuItems.map((item) => (
+            <ul className="hidden md:flex items-center gap-6">
+              {menuItemsBeforeProducts.map((item) => (
                 <li key={item.label}>
                   <Link
                     to={item.href}
@@ -123,41 +126,47 @@ const Navbar = () => {
                   </DropdownMenuContent>
                 </DropdownMenu>
               </li>
-              <li className="ml-2">
-                <Button size="sm" variant="secondary" className="bg-background text-primary hover:bg-background/90">
-                  CALL ME BACK
-                </Button>
-              </li>
+              {menuItemsAfterProducts.map((item) => (
+                <li key={item.label}>
+                  <Link
+                    to={item.href}
+                    className="px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary-foreground/10 transition-colors rounded"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            {/* Auth Section - Pushed to Right */}
+            <div className="hidden md:flex items-center gap-2 ml-auto">
+              <Button size="sm" variant="secondary" className="bg-background text-primary hover:bg-background/90">
+                CALL ME BACK
+              </Button>
               {user ? (
                 <>
                   {isAdmin && (
-                    <li className="ml-2">
-                      <Button size="sm" variant="secondary" asChild className="bg-background text-primary hover:bg-background/90">
-                        <Link to="/admin">
-                          <User className="h-4 w-4 mr-2" />
-                          ADMIN PANEL
-                        </Link>
-                      </Button>
-                    </li>
-                  )}
-                  <li className="ml-2">
-                    <Button size="sm" variant="secondary" onClick={() => signOut()} className="bg-background text-primary hover:bg-background/90">
-                      <LogOut className="h-4 w-4 mr-2" />
-                      SIGN OUT
+                    <Button size="sm" variant="secondary" asChild className="bg-background text-primary hover:bg-background/90">
+                      <Link to="/admin">
+                        <User className="h-4 w-4 mr-2" />
+                        ADMIN PANEL
+                      </Link>
                     </Button>
-                  </li>
+                  )}
+                  <Button size="sm" variant="secondary" onClick={() => signOut()} className="bg-background text-primary hover:bg-background/90">
+                    <LogOut className="h-4 w-4 mr-2" />
+                    SIGN OUT
+                  </Button>
                 </>
               ) : (
-                <li className="ml-2">
-                  <Button size="sm" variant="secondary" asChild className="bg-background text-primary hover:bg-background/90">
-                    <Link to="/auth">
-                      <User className="h-4 w-4 mr-2" />
-                      LOGIN
-                    </Link>
-                  </Button>
-                </li>
+                <Button size="sm" variant="secondary" asChild className="bg-background text-primary hover:bg-background/90">
+                  <Link to="/auth">
+                    <User className="h-4 w-4 mr-2" />
+                    LOGIN
+                  </Link>
+                </Button>
               )}
-            </ul>
+            </div>
 
             {/* Mobile Menu Button */}
             <button
@@ -173,12 +182,15 @@ const Navbar = () => {
           {isOpen && (
             <div className="md:hidden py-4 border-t border-primary-foreground/20">
               <ul className="flex flex-col gap-2">
-                {menuItems.map((item) => (
+                {[...menuItemsBeforeProducts, ...menuItemsAfterProducts].map((item) => (
                   <li key={item.label}>
                     <Link
                       to={item.href}
                       className="block py-2 text-sm font-medium text-primary-foreground hover:bg-primary-foreground/10 px-4 rounded transition-colors"
-                      onClick={() => setIsOpen(false)}
+                      onClick={() => {
+                        setIsOpen(false);
+                        window.scrollTo(0, 0);
+                      }}
                     >
                       {item.label}
                     </Link>
@@ -195,7 +207,10 @@ const Navbar = () => {
                           key={category.slug}
                           to={`/products/${category.slug}`}
                           className="block py-1 text-xs text-primary-foreground/80 hover:text-primary-foreground"
-                          onClick={() => setIsOpen(false)}
+                          onClick={() => {
+                            setIsOpen(false);
+                            window.scrollTo(0, 0);
+                          }}
                         >
                           {category.name}
                         </Link>
