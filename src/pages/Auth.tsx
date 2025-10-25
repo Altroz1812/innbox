@@ -87,26 +87,30 @@ export default function Auth() {
         style={{ backgroundImage: `url(${authHeroImage})` }}
       >
         <div className="absolute inset-0 bg-gradient-to-br from-primary/90 to-primary/70" />
-        <div className="relative z-10 flex flex-col justify-between p-12 text-white">
-          <img src={innboxLogo} alt="Innbox Prefab" className="h-16 w-auto object-contain" />
+        <div className="relative z-10 flex flex-col justify-center p-12 text-white">
+          {/* <img src={innboxLogo} alt="Innbox Prefab" className="h-16 w-auto object-contain" /> */}
           <div>
             <h1 className="text-4xl font-bold mb-4">Welcome to Innbox Prefab</h1>
-            <p className="text-xl opacity-90">Building Tomorrow's Solutions Today</p>
+            <p className="text-xl opacity-90 ">Building Tomorrow's Living Experience</p>
           </div>
         </div>
       </div>
       
       {/* Right Panel - Auth Form */}
-      <div className="flex-1 flex items-center justify-center p-4 lg:p-8 bg-background">
-        <Card className="w-full max-w-md">
+      <div className="flex-1 flex items-center justify-center p-8 bg-[#FAFAFA]">
+ {/* <div className="relative z-10 flex-1 flex items-center flex-col justify-center p-8 text-white"> */}
+                 
+        <Card className="w-full max-w-md border border-orange-300 p-4 shadow-orange-200/50">
           <CardHeader className="space-y-4">
-            <div className="flex justify-center lg:hidden">
-              <img src={innboxLogo} alt="Innbox Prefab" className="h-12 w-auto object-contain" />
+            <div className="flex justify-center lg:show">
+              {/* <img src={innboxLogo} alt="Innbox Prefab" className="h-12 w-auto object-contain" /> */}
             </div>
-            <CardTitle className="text-2xl font-bold text-center">Innbox Prefab</CardTitle>
-            <CardDescription className="text-center">
-              Sign in to access admin features
-            </CardDescription>
+            {/* <CardTitle className="text-2xl font-bold text-center">Innbox Modular Prefab</CardTitle> */}
+             <img src={innboxLogo} alt="Innbox Prefab" className="h-24 w-auto object-contain" />
+
+              {/* <CardDescription className="text-center">
+                Sign in to access admin features
+              </CardDescription> */}
           </CardHeader>
           <CardContent>
             <Tabs defaultValue="signin" className="w-full">
