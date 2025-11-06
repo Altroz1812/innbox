@@ -47,7 +47,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
       {/* Desktop Sidebar */}
       <aside className="hidden lg:flex w-64 flex-col gap-4 border-r bg-card p-6">
         <div className="flex items-center gap-2 font-semibold mb-4">
-          <span className="text-xl">Max Prefabs Admin</span>
+          <span className="text-xl">Admin Console</span>
         </div>
         <nav className="flex flex-col gap-2 flex-1">
           <NavLinks />

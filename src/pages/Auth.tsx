@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { z } from 'zod';
 import innboxLogo from '@/assets/innbox-logo.png';
 import authHeroImage from '@/assets/hero-container-building.jpg';
@@ -21,8 +22,10 @@ export default function Auth() {
   const [signInPassword, setSignInPassword] = useState('');
   const [signUpEmail, setSignUpEmail] = useState('');
   const [signUpPassword, setSignUpPassword] = useState('');
+  const [resetEmail, setResetEmail] = useState('');
+  const [isResetDialogOpen, setIsResetDialogOpen] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const { signIn, signUp, user } = useAuth();
+  const { signIn, signUp, resetPassword, user } = useAuth();
   const navigate = useNavigate();
 
   // Redirect if already logged in
@@ -79,6 +82,25 @@ export default function Auth() {
     }
   };
 
+  const handleResetPassword = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setErrors({});
+    
+    try {
+      z.string().email().parse(resetEmail);
+      setIsLoading(true);
+      await resetPassword(resetEmail);
+      setIsResetDialogOpen(false);
+      setResetEmail('');
+    } catch (error: any) {
+      if (error instanceof z.ZodError) {
+        setErrors({ resetEmail: 'Invalid email address' });
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen flex">
       {/* Left Panel - Desktop Only */}
@@ -87,30 +109,26 @@ export default function Auth() {
         style={{ backgroundImage: `url(${authHeroImage})` }}
       >
         <div className="absolute inset-0 bg-gradient-to-br from-primary/90 to-primary/70" />
-        <div className="relative z-10 flex flex-col justify-center p-12 text-white">
-          {/* <img src={innboxLogo} alt="Innbox Prefab" className="h-16 w-auto object-contain" /> */}
+        <div className="relative z-10 flex flex-col justify-between p-12 text-white">
+          <img src={innboxLogo} alt="Innbox Prefab" className="h-16 w-auto object-contain" />
           <div>
             <h1 className="text-4xl font-bold mb-4">Welcome to Innbox Prefab</h1>
-            <p className="text-xl opacity-90 ">Building Tomorrow's Living Experience</p>
+            <p className="text-xl opacity-90">Building Tomorrow's Solutions Today</p>
           </div>
         </div>
       </div>
       
       {/* Right Panel - Auth Form */}
-      <div className="flex-1 flex items-center justify-center p-8 bg-[#FAFAFA]">
- {/* <div className="relative z-10 flex-1 flex items-center flex-col justify-center p-8 text-white"> */}
-                 
-        <Card className="w-full max-w-md border border-orange-300 p-4 shadow-orange-200/50">
+      <div className="flex-1 flex items-center justify-center p-4 lg:p-8 bg-background">
+        <Card className="w-full max-w-md">
           <CardHeader className="space-y-4">
-            <div className="flex justify-center lg:show">
-              {/* <img src={innboxLogo} alt="Innbox Prefab" className="h-12 w-auto object-contain" /> */}
+            <div className="flex justify-center lg:hidden">
+              <img src={innboxLogo} alt="Innbox Prefab" className="h-12 w-auto object-contain" />
             </div>
-            {/* <CardTitle className="text-2xl font-bold text-center">Innbox Modular Prefab</CardTitle> */}
-             <img src={innboxLogo} alt="Innbox Prefab" className="h-24 w-auto object-contain" />
-
-              {/* <CardDescription className="text-center">
-                Sign in to access admin features
-              </CardDescription> */}
+            <CardTitle className="text-2xl font-bold text-center">Innbox Prefab</CardTitle>
+            <CardDescription className="text-center">
+              Sign in to access admin features
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <Tabs defaultValue="signin" className="w-full">
@@ -150,6 +168,40 @@ export default function Auth() {
                   <Button type="submit" className="w-full" disabled={isLoading}>
                     {isLoading ? 'Signing in...' : 'Sign In'}
                   </Button>
+                  
+                  <Dialog open={isResetDialogOpen} onOpenChange={setIsResetDialogOpen}>
+                    <DialogTrigger asChild>
+                      <Button variant="link" className="w-full text-sm text-muted-foreground hover:text-primary">
+                        Forgot password?
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent>
+                      <DialogHeader>
+                        <DialogTitle>Reset Password</DialogTitle>
+                        <DialogDescription>
+                          Enter your email address and we'll send you a link to reset your password.
+                        </DialogDescription>
+                      </DialogHeader>
+                      <form onSubmit={handleResetPassword} className="space-y-4">
+                        <div className="space-y-2">
+                          <Label htmlFor="reset-email">Email</Label>
+                          <Input
+                            id="reset-email"
+                            type="email"
+                            placeholder="your@email.com"
+                            value={resetEmail}
+                            onChange={(e) => setResetEmail(e.target.value)}
+                            disabled={isLoading}
+                            required
+                          />
+                          {errors.resetEmail && <p className="text-sm text-destructive">{errors.resetEmail}</p>}
+                        </div>
+                        <Button type="submit" className="w-full" disabled={isLoading}>
+                          {isLoading ? 'Sending...' : 'Send Reset Link'}
+                        </Button>
+                      </form>
+                    </DialogContent>
+                  </Dialog>
                 </form>
               </TabsContent>
 
