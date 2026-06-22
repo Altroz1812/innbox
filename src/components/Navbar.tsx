@@ -38,32 +38,80 @@ const Navbar = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex h-12 items-center justify-between text-sm">
             <div className="flex items-center gap-6">
-              <a href="mailto:info@innboxmodular.com" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+              <a href="mailto:sales@innboxmodular.com" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
                 <Mail className="h-4 w-4" />
-                <span>info@innboxmodular.com</span>
+                <span>sales@innboxmodular.com</span>
               </a>
               <a href="tel:+916302165600" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
                 <Phone className="h-4 w-4" />
                 <span>+91 630-216-5600</span>
               </a>
             </div>
-            <div className="flex items-center gap-3">
-              <a href="https://www.facebook.com/innboxmodularprefab" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-                <Facebook className="h-4 w-4" />
-              </a>
-              <a href="https://x.com/InnboxP?s=08" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-                <FaXTwitter className="h-4 w-4" />
-              </a>
-              <a href="https://www.youtube.com/@innboxmodularprefab2" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-                <FaYoutube className="h-4 w-4" />
-              </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-                <Instagram className="h-4 w-4" />
-              </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-                <Linkedin className="h-4 w-4" />
-              </a>
-            </div>
+
+            <div className="flex flex-col md:flex-row md:items-center gap-4">
+  
+  {/* ISO Certifications */}
+  <div className="flex flex-wrap items-center gap-2 text-sm font-medium">
+    <span className="px-2 py-1 border rounded-md bg-muted">
+      ISO 9001:2015
+    </span>
+    <span className="px-2 py-1 border rounded-md bg-muted">
+      ISO 14001:2015
+    </span>
+    <span className="px-2 py-1 border rounded-md bg-muted">
+      ISO 45001:2018
+    </span>
+  </div>
+
+  {/* Social Media Icons */}
+  <div className="flex items-center gap-3">
+    <a
+      href="https://www.facebook.com/innboxmodularprefab"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-muted-foreground hover:text-primary transition-colors"
+    >
+      <Facebook className="h-4 w-4" />
+    </a>
+
+    <a
+      href="https://x.com/InnboxP?s=08"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-muted-foreground hover:text-primary transition-colors"
+    >
+      <FaXTwitter className="h-4 w-4" />
+    </a>
+
+    <a
+      href="https://www.youtube.com/@innboxmodularprefab2"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-muted-foreground hover:text-primary transition-colors"
+    >
+      <FaYoutube className="h-4 w-4" />
+    </a>
+
+    <a
+      href="https://instagram.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-muted-foreground hover:text-primary transition-colors"
+    >
+      <Instagram className="h-4 w-4" />
+    </a>
+
+    <a
+      href="https://linkedin.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-muted-foreground hover:text-primary transition-colors"
+    >
+      <Linkedin className="h-4 w-4" />
+    </a>
+  </div>
+
+</div>
           </div>
         </div>
       </div>
